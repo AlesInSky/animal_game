@@ -1,0 +1,27 @@
+<!-- res/drawable/custom_progress.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Фон с обводкой -->
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <solid android:color="?colorOnSurface" /> <!-- Цвет фона -->
+            <stroke
+                android:width="6dp"
+                android:color="?colorPrimary" /> <!-- Обводка -->
+            <size android:height="8dp" /> <!-- Толщина самой полоски -->
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+
+    <!-- Заполненная часть -->
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="?colorSecondary" /> <!-- Цвет прогресса -->
+                <stroke
+                    android:width="6dp"
+                    android:color="?colorPrimary" /> <!-- Обводка -->
+                <corners android:radius="12dp" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>
