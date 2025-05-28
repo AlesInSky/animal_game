@@ -1,10 +1,11 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.recycler_view
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.animal_tamagochi.R
 import com.example.animal_tamagochi.models.Chapters
 
 class ChapterChangeRecyclerView(private val item: List<Chapters>) :

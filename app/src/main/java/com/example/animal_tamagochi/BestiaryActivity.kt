@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.animal_tamagochi.models.Characters
+import com.example.animal_tamagochi.recycler_view.BestiaryRecyclerView
 
 class BestiaryActivity : ComponentActivity() {
     @SuppressLint("MissingInflatedId")
