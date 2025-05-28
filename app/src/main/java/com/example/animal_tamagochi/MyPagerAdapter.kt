@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animal_tamagochi.models.InfoCardDataClass
+import com.example.animal_tamagochi.models.InfoCard
 
-class MyPagerAdapter(private val item: List<InfoCardDataClass>) :
+class MyPagerAdapter(private val item: List<InfoCard>) :
     RecyclerView.Adapter<MyPagerAdapter.CardViewHolder>() {
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

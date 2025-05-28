@@ -1,6 +1,6 @@
 package com.example.animal_tamagochi.models
 
-class MessageDataClass (
+data class Message(
     val message: String,
-    val character: String
+    val character: String,
 )

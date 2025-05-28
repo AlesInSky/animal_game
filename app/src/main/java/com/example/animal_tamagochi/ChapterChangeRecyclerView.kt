@@ -5,9 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animal_tamagochi.models.ChaptersDataClass
+import com.example.animal_tamagochi.models.Chapters
 
-class ChapterChangeRecyclerView(private val item: List<ChaptersDataClass>) :
+class ChapterChangeRecyclerView(private val item: List<Chapters>) :
     RecyclerView.Adapter<ChapterChangeRecyclerView.CardViewHolder>() {
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
