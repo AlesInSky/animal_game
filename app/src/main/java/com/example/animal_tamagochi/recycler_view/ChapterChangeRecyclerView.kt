@@ -18,8 +18,7 @@ class ChapterChangeRecyclerView(private val item: List<Chapters>) :
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CardViewHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_chapter, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_chapter, parent, false)
         return CardViewHolder(view)
     }
 
