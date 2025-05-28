@@ -1,4 +1,4 @@
-package com.example.plant_tamagochi
+package com.example.animal_tamagochi
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

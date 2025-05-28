@@ -1,4 +1,4 @@
-package com.example.plant_tamagochi
+package com.example.animal_tamagochi
 
 import org.junit.Test
 

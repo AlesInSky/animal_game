@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">animal_tamagochi</string>
     <string name="plant_params">Animal plant: %1$s, Mood plant: %2$d, Water plant: %3$d</string>
+    <string name="enter_the_solution">Enter the solution</string>
+    <string name="answer">Answer</string>
+
 </resources>

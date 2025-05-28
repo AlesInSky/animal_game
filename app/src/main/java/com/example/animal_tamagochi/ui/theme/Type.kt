@@ -1,4 +1,4 @@
-package com.example.plant_tamagochi.ui.theme
+package com.example.animal_tamagochi.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
