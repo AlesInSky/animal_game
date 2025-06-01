@@ -8,6 +8,7 @@
     android:layout_marginTop="30dp"
     android:orientation="vertical"
     app:cardBackgroundColor="?attr/colorSurface"
+    android:background="@drawable/background"
     app:cardCornerRadius="12dp"
     app:cardElevation="4dp">
 

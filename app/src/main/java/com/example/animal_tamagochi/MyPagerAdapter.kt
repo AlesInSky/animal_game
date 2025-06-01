@@ -8,10 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.animal_tamagochi.models.InfoCard
 
-class MyPagerAdapter(private val item: List<InfoCard>) :
+class MyPagerAdapter(
+    private val item: List<InfoCard>,
+    private val onItemClick: (InfoCard) -> Unit,
+) :
     RecyclerView.Adapter<MyPagerAdapter.CardViewHolder>() {
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
         val imageView: ImageView = itemView.findViewById(R.id.cardInfoImageView)
         val titleText: TextView = itemView.findViewById(R.id.cardInfoTitleText)
         val descriptionText: TextView = itemView.findViewById(R.id.cardInfoDescriptionText)
@@ -28,6 +32,10 @@ class MyPagerAdapter(private val item: List<InfoCard>) :
         holder.imageView.setImageResource(card.imageResId)
         holder.titleText.text = card.title
         holder.descriptionText.text = card.description
+
+        holder.itemView.setOnClickListener{
+            onItemClick(card)
+        }
     }
 
     override fun getItemCount(): Int = item.size

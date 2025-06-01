@@ -1,6 +1,7 @@
 package com.example.animal_tamagochi
 
 import android.os.Bundle
+import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,7 +13,7 @@ import com.example.animal_tamagochi.models.DiaryNote
 import com.example.animal_tamagochi.recycler_view.ChapterChangeRecyclerView
 import com.example.animal_tamagochi.recycler_view.DiaryRecyclerView
 
-class DiaryView : AppCompatActivity() {
+class DiaryView : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

@@ -27,7 +27,7 @@ class BestiaryDetailsRecyclerView(private val item: List<Characters>): RecyclerV
         position: Int
     ) {
         val card = item[position]
-        holder.imageCharacter.setImageResource(R.drawable.ic_launcher_foreground)
+        holder.imageCharacter.setImageResource(card.image)
         holder.titleCharacter.text = card.chapterTitle
         holder.descriptionCharacter.text = card.chapterDescription
     }

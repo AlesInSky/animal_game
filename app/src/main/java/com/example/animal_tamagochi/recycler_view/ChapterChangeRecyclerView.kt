@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.animal_tamagochi.R
 import com.example.animal_tamagochi.models.Chapters
 
-class ChapterChangeRecyclerView(private val item: List<Chapters>) :
+class ChapterChangeRecyclerView(
+    private val item: List<Chapters>,
+    private val onItemClick: (Chapters) -> Unit,
+) :
     RecyclerView.Adapter<ChapterChangeRecyclerView.CardViewHolder>() {
 
     inner class CardViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -27,6 +30,10 @@ class ChapterChangeRecyclerView(private val item: List<Chapters>) :
         holder.numberChapter.text = card.number.toString()
         holder.titleChapter.text = card.chapterTitle
         holder.descriptionChapter.text = card.chapterDescription
+
+        holder.itemView.setOnClickListener{
+            onItemClick(card)
+        }
     }
 
     override fun getItemCount(): Int = item.size
