@@ -5,6 +5,57 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_message"
     tools:context=".FirstChapter">
+
+    <TextView
+        android:id="@+id/dialogue_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toTopOf="@id/tadpole_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="1 chapter. \n Выясните кто врет \n (Для продолжения нажмите на головастиков)" />
+
+    <Button
+        android:id="@+id/tadpole_first"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Первый головастик врет"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/tadpole_second"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Второй головастик врет"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/tadpole_first" />
+
+    <Button
+        android:id="@+id/tadpole_thirst"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Третий головастик врет"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintTop_toBottomOf="@id/tadpole_second" />
+
+    <ImageView
+        android:id="@+id/tadpole_image"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/headers_no_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

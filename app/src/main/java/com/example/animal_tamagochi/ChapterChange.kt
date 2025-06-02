@@ -25,15 +25,18 @@ class ChapterChange : ComponentActivity() {
             Chapters(5, "Grand finale", "Description")
         )
 
+        //Сделать функцию, которая вызывает Dialogue перед главой в DialogueActivity и activity_dialogue
+
         val adapter = ChapterChangeRecyclerView(chapter) { selectedItem ->
             val intent = when (selectedItem.number) {
-                1 -> Intent(this, FirstChapter::class.java)
+                1 -> Intent(this, DialogueActivity::class.java)
                 2 -> Intent(this, FirstChapter::class.java)
                 3 -> Intent(this, FirstChapter::class.java)
                 4 -> Intent(this, FirstChapter::class.java)
                 5 -> Intent(this, FirstChapter::class.java)
                 else -> null
             }
+            intent?.putExtra("CHAPTER_KEY",selectedItem.number)
             intent?.let { startActivity(it) }
         }
         recycler.layoutManager = LinearLayoutManager(this)
