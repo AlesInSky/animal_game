@@ -3,7 +3,6 @@ package com.example.animal_tamagochi
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -13,9 +12,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 
 class FirstChapter : ComponentActivity() {
-    @SuppressLint("MissingInflatedId", "ResourceType")
+
+    @SuppressLint("MissingInflatedId", "ResourceType", "SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val intent = Intent(this, DialogueActivity::class.java)
+        intent.putExtra("CHAPTER_KEY",1)
+        startActivity(intent)
+
         enableEdgeToEdge()
         setContentView(R.layout.activity_first_chapter)
         val dialogueText = findViewById<TextView>(R.id.dialogue_text)
@@ -25,7 +30,7 @@ class FirstChapter : ComponentActivity() {
         val imageTadpole = findViewById<ImageView>(R.id.tadpole_image)
         var randomNumber = listOf(1, 2, 3)
 
-        Log.e("AAA", randomNumber.toString())
+
         var counter = 0
 
 
@@ -56,46 +61,47 @@ class FirstChapter : ComponentActivity() {
 
         firstTadpoleButton.setOnClickListener() {
             if (randomNumber[1] == 1) {
-                Toast.makeText(this, "Да! Головастик врёт !", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Да! Головастик врёт !", Toast.LENGTH_SHORT).show()
                 counter++
                 firstTadpoleButton.visibility = View.INVISIBLE
                 secondTadpoleButton.visibility = View.INVISIBLE
                 thirstTadpoleButton.visibility = View.INVISIBLE
                 dialogueText.text =
                     "Головастик попался на лжи ! \n Идем дальше ! \n\n (Для продолжения нажмите на головастиков)"
-            } else {Toast.makeText(this, "Попробуй еще раз!", Toast.LENGTH_LONG).show()
+            } else {Toast.makeText(this, "Попробуй еще раз!", Toast.LENGTH_SHORT).show()
                 firstTadpoleButton.visibility = View.INVISIBLE}
         }
         secondTadpoleButton.setOnClickListener() {
             if (randomNumber[1] == 2) {
-                Toast.makeText(this, "Да! Головастик врёт !", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Да! Головастик врёт !", Toast.LENGTH_SHORT).show()
                 counter++
                 firstTadpoleButton.visibility = View.INVISIBLE
                 secondTadpoleButton.visibility = View.INVISIBLE
                 thirstTadpoleButton.visibility = View.INVISIBLE
                 dialogueText.text =
                     "Головастик попался на лжи ! \n Идем дальше ! \n\n (Для продолжения нажмите на головастиков)"
-            } else {Toast.makeText(this, "Попробуй еще раз!", Toast.LENGTH_LONG).show()
+            } else {Toast.makeText(this, "Попробуй еще раз!", Toast.LENGTH_SHORT).show()
                 secondTadpoleButton.visibility = View.INVISIBLE}
         }
         thirstTadpoleButton.setOnClickListener() {
             if (randomNumber[1] == 3) {
-                Toast.makeText(this, "Да! Головастик врёт !", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Да! Головастик врёт !", Toast.LENGTH_SHORT).show()
                 counter++
                 firstTadpoleButton.visibility = View.INVISIBLE
                 secondTadpoleButton.visibility = View.INVISIBLE
                 thirstTadpoleButton.visibility = View.INVISIBLE
                 dialogueText.text =
                     "Головастик попался на лжи ! \n Идем дальше ! \n\n (Для продолжения нажмите на головастиков)"
-            } else {Toast.makeText(this, "Попробуй еще раз!", Toast.LENGTH_LONG).show()
+            } else {Toast.makeText(this, "Попробуй еще раз!", Toast.LENGTH_SHORT).show()
                 thirstTadpoleButton.visibility = View.INVISIBLE}
         }
 
         imageTadpole.setOnClickListener() {
             if (counter == 3){
                 val intent = Intent(this, DialogueActivity::class.java)
-                intent.putExtra("CHAPTER_KEY",2)
+                intent.putExtra("CHAPTER_KEY",11)
                 startActivity(intent)
+                finish()
 
             } else
             getQuestion()

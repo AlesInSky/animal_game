@@ -111,7 +111,7 @@ object DialogueManager {
 
             )
 
-            2 -> listOf(
+            11 -> listOf(
                 DialogueLine(
                     narrator,
                     "Сцена: кабинет для допросов. Тусклый свет. \n" +
