@@ -1,6 +1,7 @@
 package com.example.animal_tamagochi
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -8,6 +9,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import java.util.Timer
@@ -21,12 +23,22 @@ class SecondChapter : ComponentActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_second_chapter)
 
+        val intent = Intent(this, DialogueActivity::class.java)
+        intent.putExtra("CHAPTER_KEY", 2)
+        startActivity(intent)
+
         var imageCounter = 0
         val timerFly = Timer()
         val gameLayout = findViewById<FrameLayout>(R.id.second_chapter_layout)
         val counterView = findViewById<TextView>(R.id.fly_counter)
         val progressBar = findViewById<ProgressBar>(R.id.progress_timer)
         val imageView = ImageView(this)
+
+        fun getFinishDialogue() {
+            val intent = Intent(this, DialogueActivity::class.java)
+            intent.putExtra("CHAPTER_KEY", 22)
+            startActivity(intent)
+        }
 
 
         fun getFly(): ImageView {
@@ -54,7 +66,8 @@ class SecondChapter : ComponentActivity() {
 
             override fun onFinish() {
                 progressBar.progress = 0
-                //finish()
+                Toast.makeText(this@SecondChapter, "Время вышло! Попробуй еще раз!", Toast.LENGTH_SHORT).show()
+                finish()
             }
         }
         timerChapter.start()
@@ -65,14 +78,14 @@ class SecondChapter : ComponentActivity() {
             override fun run() {
                 runOnUiThread {
                     if (imageCounter >= 10) {
+                        imageCounter = 0
+                        getFinishDialogue()
                         finish()
-                    }else
-                    getFly()
+                    } else
+                        getFly()
                 }
             }
         }, 0, 500)
-
-
 
         gameLayout.addView(imageView)
 
@@ -80,8 +93,6 @@ class SecondChapter : ComponentActivity() {
             imageCounter++
             counterView.text = "Мух поймано: ${imageCounter}"
         }
-
-
     }
 
     override fun onDestroy() {
