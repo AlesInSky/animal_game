@@ -13,6 +13,9 @@
         android:theme="@style/Theme.MyCustomTheme"
         tools:targetApi="31">
         <activity
+            android:name=".SecondChapter"
+            android:exported="false" />
+        <activity
             android:name=".DialogueActivity"
             android:exported="false" />
         <activity

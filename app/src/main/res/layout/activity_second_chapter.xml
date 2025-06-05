@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/second_chapter_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/second_chapter_background"
+    tools:context=".SecondChapter">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/second_chapter_card"
+        android:layout_width="match_parent"
+        android:layout_gravity="bottom"
+        android:backgroundTintMode="screen"
+        android:layout_height="100dp">
+
+        <TextView
+            android:id="@+id/fly_counter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Мух поймано: 0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Времени осталось"/>
+
+        <ProgressBar
+            android:id="@+id/progress_timer"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:progress="50"
+            android:layout_marginBottom="10dp"
+            android:progressDrawable="@drawable/progress_border"
+            android:indeterminate="false"/>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</FrameLayout>

@@ -28,7 +28,7 @@ class ChapterChange : ComponentActivity() {
         val adapter = ChapterChangeRecyclerView(chapter) { selectedItem ->
             val intent = when (selectedItem.number) {
                 1 -> Intent(this, FirstChapter::class.java)
-                2 -> Intent(this, FirstChapter::class.java)
+                2 -> Intent(this, SecondChapter::class.java)
                 3 -> Intent(this, FirstChapter::class.java)
                 4 -> Intent(this, FirstChapter::class.java)
                 5 -> Intent(this, FirstChapter::class.java)
