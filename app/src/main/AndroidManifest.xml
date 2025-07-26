@@ -13,31 +13,31 @@
         android:theme="@style/Theme.MyCustomTheme"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
+            android:name=".ThirdChapter"
+            android:exported="true" />
         <activity
             android:name=".SecondChapter"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".DialogueActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".FirstChapter"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".DiaryView"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".BestiaryActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ChapterChange"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".BestiaryActivityDetails"
-            android:exported="false" />
+            android:exported="true" />
         <activity
-            android:name=".ThirdChapter"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
