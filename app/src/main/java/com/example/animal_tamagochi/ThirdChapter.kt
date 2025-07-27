@@ -1,10 +1,8 @@
 package com.example.animal_tamagochi
-
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.widget.ImageView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import com.example.animal_tamagochi.models.Card
@@ -13,12 +11,21 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class ThirdChapter : ComponentActivity() {
 
     private lateinit var dialogueLauncher: ActivityResultLauncher<Intent>
     private lateinit var progressBar: ProgressBar
     private var timer: CountDownTimer? = null
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var cards: MutableList<Card>
+    private lateinit var adapter: CardAdapter
+
+    private var flippedCards = mutableListOf<Int>()
+    private var matchedCount = 0
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,27 +34,11 @@ class ThirdChapter : ComponentActivity() {
         setContentView(R.layout.activity_third_chapter)
 
         progressBar = findViewById(R.id.progress_timer)
+        recyclerView = findViewById(R.id.card_grid)
+        recyclerView.layoutManager = GridLayoutManager(this, 3)
 
-        dialogueLauncher =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-                startGameTimer()
-            }
-
-        val startIntent = Intent(this, DialogueActivity::class.java)
-        startIntent.putExtra("CHAPTER_KEY", 3)
-        dialogueLauncher.launch(startIntent)
-
-        fun getFinishDialogue() {
-            timer?.cancel()
-            val intent = Intent(this, DialogueActivity::class.java)
-            intent.putExtra("CHAPTER_KEY", 33)
-            dialogueLauncher.launch(intent)
-        }
-
-        var flippedCard = mutableListOf<Pair<ImageView, Card>>()
-        var counter = 0
-
-        val cardList = mutableListOf(
+        // Список карточек
+        cards = mutableListOf(
             Card(false, R.drawable.card1),
             Card(false, R.drawable.card1),
             Card(false, R.drawable.card2),
@@ -55,64 +46,73 @@ class ThirdChapter : ComponentActivity() {
             Card(false, R.drawable.card3),
             Card(false, R.drawable.card3),
             Card(false, R.drawable.card4),
-            Card(false, R.drawable.card4)
-        ).shuffled()
+            Card(false, R.drawable.card4),
+            Card(false, R.drawable.card5),
+            Card(false, R.drawable.card5),
+            Card(false, R.drawable.card6),
+            Card(false, R.drawable.card6)
+        ).shuffled().toMutableList()
 
-        val imageViews = listOf(
-            findViewById<ImageView>(R.id.card1),
-            findViewById<ImageView>(R.id.card2),
-            findViewById<ImageView>(R.id.card3),
-            findViewById<ImageView>(R.id.card4),
-            findViewById<ImageView>(R.id.card5),
-            findViewById<ImageView>(R.id.card6),
-            findViewById<ImageView>(R.id.card7),
-            findViewById<ImageView>(R.id.card8)
-        )
-
-        for (imageView in imageViews) {
-            imageView.setImageResource(R.drawable.cover_card)
+        adapter = CardAdapter(cards) { index ->
+            handleCardClick(index)
         }
 
-        for (i in cardList.indices) {
-            val card = cardList[i]
-            val imageView = imageViews[i]
+        recyclerView.adapter = adapter
 
-            imageView.setOnClickListener {
-                if (card.isFlipped || flippedCard.size == 2) return@setOnClickListener
+        // Диалог перед стартом
+        dialogueLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            startGameTimer()
+        }
 
-                card.isFlipped = true
-                imageView.setImageResource(card.image)
-                flippedCard.add(imageView to card)
+        val startIntent = Intent(this, DialogueActivity::class.java)
+        startIntent.putExtra("CHAPTER_KEY", 3)
+        dialogueLauncher.launch(startIntent)
+    }
 
-                if (flippedCard.size == 2) {
-                    val (firstView, firstCard) = flippedCard[0]
-                    val (secondView, secondCard) = flippedCard[1]
+    private fun handleCardClick(index: Int) {
+        if (cards[index].isFlipped || flippedCards.size == 2) return
 
-                    if (firstCard.image == secondCard.image) {
-                        flippedCard.clear()
-                        counter += 2
-                        if (counter == cardList.size) {
-                            getFinishDialogue()
-                            finish()
-                        }
-                    } else {
-                        Handler().postDelayed({
-                            firstCard.isFlipped = false
-                            secondCard.isFlipped = false
-                            firstView.setImageResource(R.drawable.cover_card)
-                            secondView.setImageResource(R.drawable.cover_card)
-                            flippedCard.clear()
-                        }, 750)
-                    }
+        cards[index].isFlipped = true
+        flippedCards.add(index)
+        adapter.notifyItemChanged(index)
+
+        if (flippedCards.size == 2) {
+            val first = flippedCards[0]
+            val second = flippedCards[1]
+
+            if (cards[first].image == cards[second].image) {
+                // Успешная пара
+                flippedCards.clear()
+                matchedCount += 2
+
+                if (matchedCount == cards.size) {
+                    getFinishDialogue()
+                    finish()
                 }
+            } else {
+                // Не совпало — переворачиваем обратно через паузу
+                Handler().postDelayed({
+                    cards[first].isFlipped = false
+                    cards[second].isFlipped = false
+                    adapter.notifyItemChanged(first)
+                    adapter.notifyItemChanged(second)
+                    flippedCards.clear()
+                }, 650)
             }
         }
     }
 
+    private fun getFinishDialogue() {
+        timer?.cancel()
+        val intent = Intent(this, DialogueActivity::class.java)
+        intent.putExtra("CHAPTER_KEY", 33)
+        dialogueLauncher.launch(intent)
+    }
+
     private fun startGameTimer() {
-        timer = object : CountDownTimer(10000, 100) {
+        timer = object : CountDownTimer(40000, 100) {
             override fun onTick(millisUntilFinished: Long) {
-                val progress = (millisUntilFinished / 10000.0 * 100).toInt()
+                val progress = (millisUntilFinished / 40000.0 * 100).toInt()
                 progressBar.progress = progress
             }
 
@@ -127,6 +127,6 @@ class ThirdChapter : ComponentActivity() {
             }
         }
 
-        timer?.start() // теперь используется глобальная переменная timer
+        timer?.start()
     }
 }
