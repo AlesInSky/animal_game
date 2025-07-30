@@ -21,8 +21,10 @@ object CharacterManager {
         Characters(4, R.drawable.slug_no_background, "The Informant is a Slug", "Description"),
         Characters(5, R.drawable.bad_guy_no_background, "Club Lampless", "Description"),
         Characters(6, R.drawable.heron_no_background, "Heron", "Description"),
-        Characters(7,R.drawable.ic_launcher_foreground, "Narrator", "Unknown")
+        Characters(7, 0, "Narrator", "Unknown"),
+        Characters(8, R.drawable.king_no_background, "King", "Unknown"),
+        Characters(9, R.drawable.bad_froggy_head_no_background, "Bad Froggy", "Unknown"),
+        Characters(10, R.drawable.bad_froggy_advisor_no_background, "Bad Froggy advisor", "Unknown"),
+        Characters(11, R.drawable.good_froggy_advisor_no_background, "Good Froggy advisor", "Unknown")
     )
-
-
 }
