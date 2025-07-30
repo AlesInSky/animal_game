@@ -13,17 +13,22 @@
         android:theme="@style/Theme.MyCustomTheme"
         tools:targetApi="31">
         <activity
-            android:name=".ThirdChapter"
+            android:name=".FirstChapter"
             android:exported="true" />
         <activity
             android:name=".SecondChapter"
             android:exported="true" />
         <activity
-            android:name=".DialogueActivity"
+            android:name=".ThirdChapter"
             android:exported="true" />
         <activity
-            android:name=".FirstChapter"
+            android:name=".FourthChapter"
             android:exported="true" />
+
+        <activity
+            android:name=".DialogueActivity"
+            android:exported="true" />
+
         <activity
             android:name=".DiaryView"
             android:exported="true" />
