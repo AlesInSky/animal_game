@@ -21,8 +21,7 @@ class ChapterChange : ComponentActivity() {
             Chapters(1, "Intro", "Начало хорошей истории"),
             Chapters(2, "Run", "Description"),
             Chapters(3, "No lighters", "Description"),
-            Chapters(4, "Unknown chapter", "Description"),
-            Chapters(5, "Grand finale", "Description")
+            Chapters(4, "Grand finale", "Description")
         )
 
         val adapter = ChapterChangeRecyclerView(chapter) { selectedItem ->
@@ -30,8 +29,7 @@ class ChapterChange : ComponentActivity() {
                 1 -> Intent(this, FirstChapter::class.java)
                 2 -> Intent(this, SecondChapter::class.java)
                 3 -> Intent(this, ThirdChapter::class.java)
-                4 -> Intent(this, FirstChapter::class.java)
-                5 -> Intent(this, FirstChapter::class.java)
+                4 -> Intent(this, FourthChapter::class.java)
                 else -> null
             }
             intent?.putExtra("CHAPTER_KEY",selectedItem.number)
