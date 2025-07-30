@@ -22,6 +22,7 @@ class DialogueActivity : ComponentActivity() {
         if (dialogue.isNotEmpty()) {
             val firstLine = dialogue[counter]
             sendMessage.text = firstLine.text
+            imageMessage.setImageResource(firstLine.character.image)
         }
 
         imageMessage.setOnClickListener() {
