@@ -50,7 +50,7 @@ class FourthChapter : ComponentActivity() {
         btn4.setOnClickListener { handleChoice(414, 423) }
 
         updateButtonText()
-        startDialogue(4) // начальный диалог
+        startDialogue(4)
     }
 
     private fun startDialogue(chapterKey: Int) {
