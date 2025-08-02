@@ -1,4 +1,4 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.presentation.firstchapter
 
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +10,9 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.ViewModelProvider
+import com.example.animal_tamagochi.DialogueActivity
+import com.example.animal_tamagochi.R
+import com.example.animal_tamagochi.domain.usecase.GetQuestionUseCase
 
 class FirstChapter : ComponentActivity() {
 
@@ -19,13 +22,15 @@ class FirstChapter : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         val intent = Intent(this, DialogueActivity::class.java)
-        intent.putExtra("CHAPTER_KEY",1)
+        intent.putExtra("CHAPTER_KEY", 1)
         startActivity(intent)
 
         enableEdgeToEdge()
         setContentView(R.layout.activity_first_chapter)
 
-        viewModel = ViewModelProvider(this)[FirstChapterViewModel::class.java]
+        val getQuestionUseCase = GetQuestionUseCase()
+        val factory = FirstChapterViewModelFactory(getQuestionUseCase)
+        viewModel = ViewModelProvider(this, factory)[FirstChapterViewModel::class.java]
 
         val dialogueText = findViewById<TextView>(R.id.dialogue_text)
         val firstButton = findViewById<Button>(R.id.tadpole_first)

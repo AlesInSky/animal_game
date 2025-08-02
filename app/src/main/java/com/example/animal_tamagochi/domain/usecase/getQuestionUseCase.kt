@@ -1,27 +1,8 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.domain.usecase
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-
-class FirstChapterViewModel : ViewModel() {
-    private val _dialogueText = MutableLiveData<String>()
-    val dialogueText: LiveData<String> = _dialogueText
-
-    private val _buttonVisibility = MutableLiveData(true)
-    val buttonVisibility: LiveData<Boolean> = _buttonVisibility
-
-    private val _toastMessage = MutableLiveData<String?>()
-    val toastMessage = _toastMessage
-
-    private val _chapterFinished = MutableLiveData(false)
-    val chapterFinished = _chapterFinished
-
-    private var counter = 0
-    private var randomNumber = listOf(1, 2, 3)
-
-    fun getQuestion() {
-        val text = when (counter) {
+class GetQuestionUseCase {
+    operator fun invoke(counter: Int, randomNumber: List<Int>): String {
+        return when (counter) {
             0 -> "Головастик ${randomNumber[0]}: «Я видел, как кто-то крался к королевской кувшинке вчера вечером.»\n\n" +
                     "Головастик ${randomNumber[1]}: «Я был с Головастиком ${randomNumber[2]} весь вечер, мы ловили комаров.»\n\n" +
                     "Головастик ${randomNumber[2]}: «Это неправда! Я весь вечер прятался от совы один.»"
@@ -36,28 +17,5 @@ class FirstChapterViewModel : ViewModel() {
 
             else -> "Unknown error"
         }
-        _dialogueText.value = text
-        _buttonVisibility.value = true
     }
-
-    fun selectTadpole(number: Int) {
-        if (randomNumber[1] == number) {
-            _toastMessage.value = "Да! Головастик врёт !"
-            counter++
-            _buttonVisibility.value = false
-            _dialogueText.value =
-                "Головастик попался на лжи ! \n Идем дальше ! \n\n (Для продолжения нажмите на головастиков)"
-
-            if (counter >= 3) {
-                _chapterFinished.value = true
-            }
-        } else {
-            _toastMessage.value = "Попробуй еще раз !"
-        }
-    }
-
-    fun clearToast() {
-        _toastMessage.value = null
-    }
-
 }
