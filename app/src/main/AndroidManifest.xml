@@ -13,7 +13,7 @@
         android:theme="@style/Theme.MyCustomTheme"
         tools:targetApi="31">
         <activity
-            android:name=".FirstChapter"
+            android:name=".presentation.firstchapter.FirstChapter"
             android:exported="true" />
         <activity
             android:name=".SecondChapter"

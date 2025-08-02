@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.animal_tamagochi.models.Chapters
+import com.example.animal_tamagochi.presentation.firstchapter.FirstChapter
 import com.example.animal_tamagochi.recycler_view.ChapterChangeRecyclerView
 
 class ChapterChange : ComponentActivity() {

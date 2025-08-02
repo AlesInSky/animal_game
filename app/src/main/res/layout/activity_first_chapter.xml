@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_message"
-    tools:context=".FirstChapter">
+    tools:context=".presentation.firstchapter.FirstChapter">
 
     <TextView
         android:id="@+id/dialogue_text"
