@@ -16,7 +16,7 @@
             android:name=".presentation.firstchapter.FirstChapter"
             android:exported="true" />
         <activity
-            android:name=".SecondChapter"
+            android:name=".presentation.secondchapter.SecondChapter"
             android:exported="true" />
         <activity
             android:name=".ThirdChapter"
