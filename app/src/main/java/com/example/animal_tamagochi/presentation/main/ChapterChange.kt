@@ -1,4 +1,4 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,11 +6,12 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animal_tamagochi.models.Chapters
+import com.example.animal_tamagochi.R
+import com.example.animal_tamagochi.domain.model.Chapters
 import com.example.animal_tamagochi.presentation.firstchapter.FirstChapter
 import com.example.animal_tamagochi.presentation.secondchapter.SecondChapter
 import com.example.animal_tamagochi.presentation.thirdchapter.ThirdChapter
-import com.example.animal_tamagochi.recycler_view.ChapterChangeRecyclerView
+import com.example.animal_tamagochi.presentation.common.adapter.ChapterChangeRecyclerView
 
 class ChapterChange : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +33,6 @@ class ChapterChange : ComponentActivity() {
                 1 -> Intent(this, FirstChapter::class.java)
                 2 -> Intent(this, SecondChapter::class.java)
                 3 -> Intent(this, ThirdChapter::class.java)
-                4 -> Intent(this, FourthChapter::class.java)
                 else -> null
             }
             intent?.putExtra("CHAPTER_KEY",selectedItem.number)
