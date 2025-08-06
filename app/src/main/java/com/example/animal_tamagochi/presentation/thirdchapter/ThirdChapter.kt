@@ -1,18 +1,21 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.presentation.thirdchapter
+
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import com.example.animal_tamagochi.models.Card
-import android.os.Handler
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.animal_tamagochi.models.CardAdapter
+import com.example.animal_tamagochi.DialogueActivity
+import com.example.animal_tamagochi.R
 
 class ThirdChapter : ComponentActivity() {
 
@@ -21,11 +24,9 @@ class ThirdChapter : ComponentActivity() {
     private var timer: CountDownTimer? = null
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var cards: MutableList<Card>
     private lateinit var adapter: CardAdapter
 
-    private var flippedCards = mutableListOf<Int>()
-    private var matchedCount = 0
+    private lateinit var viewModel: ThirdChapterViewModel
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,70 +37,32 @@ class ThirdChapter : ComponentActivity() {
         progressBar = findViewById(R.id.progress_timer)
         recyclerView = findViewById(R.id.card_grid)
         recyclerView.layoutManager = GridLayoutManager(this, 3)
+        viewModel = ViewModelProvider(this)[ThirdChapterViewModel::class.java]
 
-        // Список карточек
-        cards = mutableListOf(
-            Card(false, R.drawable.card1),
-            Card(false, R.drawable.card1),
-            Card(false, R.drawable.card2),
-            Card(false, R.drawable.card2),
-            Card(false, R.drawable.card3),
-            Card(false, R.drawable.card3),
-            Card(false, R.drawable.card4),
-            Card(false, R.drawable.card4),
-            Card(false, R.drawable.card5),
-            Card(false, R.drawable.card5),
-            Card(false, R.drawable.card6),
-            Card(false, R.drawable.card6)
-        ).shuffled().toMutableList()
-
-        adapter = CardAdapter(cards) { index ->
-            handleCardClick(index)
+        adapter = CardAdapter(viewModel.cards.value ?: mutableListOf()) { index ->
+            viewModel.handleCardClick(index)
         }
 
         recyclerView.adapter = adapter
 
-        // Диалог перед стартом
-        dialogueLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            startGameTimer()
+        dialogueLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                startGameTimer()
+            }
+
+        viewModel.cards.observe(this) { newCards ->
+            adapter.updateCards(newCards)
+        }
+
+        viewModel.matchedCount.observe(this) { count ->
+            if (count == viewModel.cards.value?.size) {
+                getFinishDialogue()
+            }
         }
 
         val startIntent = Intent(this, DialogueActivity::class.java)
         startIntent.putExtra("CHAPTER_KEY", 3)
         dialogueLauncher.launch(startIntent)
-    }
-
-    private fun handleCardClick(index: Int) {
-        if (cards[index].isFlipped || flippedCards.size == 2) return
-
-        cards[index].isFlipped = true
-        flippedCards.add(index)
-        adapter.notifyItemChanged(index)
-
-        if (flippedCards.size == 2) {
-            val first = flippedCards[0]
-            val second = flippedCards[1]
-
-            if (cards[first].image == cards[second].image) {
-                // Успешная пара
-                flippedCards.clear()
-                matchedCount += 2
-
-                if (matchedCount == cards.size) {
-                    getFinishDialogue()
-                    finish()
-                }
-            } else {
-                // Не совпало — переворачиваем обратно через паузу
-                Handler().postDelayed({
-                    cards[first].isFlipped = false
-                    cards[second].isFlipped = false
-                    adapter.notifyItemChanged(first)
-                    adapter.notifyItemChanged(second)
-                    flippedCards.clear()
-                }, 650)
-            }
-        }
     }
 
     private fun getFinishDialogue() {
