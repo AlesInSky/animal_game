@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.ViewModelProvider
-import com.example.animal_tamagochi.DialogueActivity
+import com.example.animal_tamagochi.domain.dialogue.DialogueActivity
 import com.example.animal_tamagochi.R
 import com.example.animal_tamagochi.domain.usecase.GetFlyUseCase
 import java.util.Timer

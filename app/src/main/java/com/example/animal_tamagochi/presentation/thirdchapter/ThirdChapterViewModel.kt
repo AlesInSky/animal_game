@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.animal_tamagochi.R
-import com.example.animal_tamagochi.models.Card
+import com.example.animal_tamagochi.domain.model.Card
 
 class ThirdChapterViewModel: ViewModel() {
 

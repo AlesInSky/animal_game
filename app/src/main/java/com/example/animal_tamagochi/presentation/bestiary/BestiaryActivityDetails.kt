@@ -1,6 +1,5 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.presentation.bestiary
 
-import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,8 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animal_tamagochi.models.Characters
-import com.example.animal_tamagochi.recycler_view.BestiaryDetailsRecyclerView
+import com.example.animal_tamagochi.R
+import com.example.animal_tamagochi.domain.model.Characters
+import com.example.animal_tamagochi.presentation.common.adapter.BestiaryDetailsRecyclerView
 
 class BestiaryActivityDetails : ComponentActivity() {
 

@@ -1,17 +1,13 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.presentation.diary
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animal_tamagochi.models.Chapters
+import com.example.animal_tamagochi.R
 import com.example.animal_tamagochi.models.DiaryNote
-import com.example.animal_tamagochi.recycler_view.ChapterChangeRecyclerView
-import com.example.animal_tamagochi.recycler_view.DiaryRecyclerView
+import com.example.animal_tamagochi.presentation.common.adapter.DiaryRecyclerView
 
 class DiaryView : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

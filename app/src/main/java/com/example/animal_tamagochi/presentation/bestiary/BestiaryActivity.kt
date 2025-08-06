@@ -1,14 +1,14 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.presentation.bestiary
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animal_tamagochi.models.Characters
-import com.example.animal_tamagochi.recycler_view.BestiaryRecyclerView
+import com.example.animal_tamagochi.R
+import com.example.animal_tamagochi.domain.model.Characters
+import com.example.animal_tamagochi.presentation.common.adapter.BestiaryRecyclerView
 
 class BestiaryActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +28,7 @@ class BestiaryActivity : ComponentActivity() {
         )
 
         val adapter = BestiaryRecyclerView(character) {selectedItem ->
-            val intent = Intent(this,BestiaryActivityDetails::class.java).apply {
+            val intent = Intent(this, BestiaryActivityDetails::class.java).apply {
                 putExtra("character", selectedItem)
             }
             startActivity(intent)

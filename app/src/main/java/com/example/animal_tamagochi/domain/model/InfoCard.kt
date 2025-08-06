@@ -1,4 +1,4 @@
-package com.example.animal_tamagochi.models
+package com.example.animal_tamagochi.domain.model
 
 data class InfoCard(
     val imageResId: Int,

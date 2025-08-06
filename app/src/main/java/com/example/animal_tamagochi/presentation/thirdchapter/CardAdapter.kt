@@ -1,4 +1,4 @@
-package com.example.animal_tamagochi.models
+package com.example.animal_tamagochi.presentation.thirdchapter
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.animal_tamagochi.R
+import com.example.animal_tamagochi.domain.model.Card
 
 class CardAdapter(
     private var cards: List<Card>,

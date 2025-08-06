@@ -1,4 +1,4 @@
-package com.example.animal_tamagochi.recycler_view
+package com.example.animal_tamagochi.presentation.common.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.animal_tamagochi.R
-import com.example.animal_tamagochi.models.Characters
+import com.example.animal_tamagochi.domain.model.Characters
 
 class BestiaryDetailsRecyclerView(private val item: List<Characters>): RecyclerView.Adapter<BestiaryDetailsRecyclerView.CardViewHolder>() {
 

@@ -1,11 +1,14 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.presentation.main
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.viewpager2.widget.ViewPager2
-import com.example.animal_tamagochi.models.InfoCard
+import com.example.animal_tamagochi.presentation.bestiary.BestiaryActivity
+import com.example.animal_tamagochi.presentation.diary.DiaryView
+import com.example.animal_tamagochi.R
+import com.example.animal_tamagochi.domain.model.InfoCard
 
 
 class MainActivity : ComponentActivity() {

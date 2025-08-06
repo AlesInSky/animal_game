@@ -1,4 +1,4 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.presentation.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,7 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animal_tamagochi.models.InfoCard
+import com.example.animal_tamagochi.R
+import com.example.animal_tamagochi.domain.model.InfoCard
 
 class MyPagerAdapter(
     private val item: List<InfoCard>,

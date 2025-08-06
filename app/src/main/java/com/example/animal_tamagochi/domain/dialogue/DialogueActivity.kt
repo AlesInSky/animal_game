@@ -1,11 +1,12 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.domain.dialogue
 
 import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
-import com.example.animal_tamagochi.models.DialogueManager
+import com.example.animal_tamagochi.R
+import com.example.animal_tamagochi.domain.model.DialogueManager
 
 class DialogueActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

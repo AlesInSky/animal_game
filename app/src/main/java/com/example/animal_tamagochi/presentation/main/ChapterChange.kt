@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.animal_tamagochi.FourthChapter
 import com.example.animal_tamagochi.R
 import com.example.animal_tamagochi.domain.model.Chapters
 import com.example.animal_tamagochi.presentation.firstchapter.FirstChapter
@@ -33,6 +34,7 @@ class ChapterChange : ComponentActivity() {
                 1 -> Intent(this, FirstChapter::class.java)
                 2 -> Intent(this, SecondChapter::class.java)
                 3 -> Intent(this, ThirdChapter::class.java)
+                4 -> Intent(this, FourthChapter::class.java)
                 else -> null
             }
             intent?.putExtra("CHAPTER_KEY",selectedItem.number)

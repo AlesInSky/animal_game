@@ -1,4 +1,4 @@
-package com.example.animal_tamagochi.recycler_view
+package com.example.animal_tamagochi.presentation.common.adapter
 
 import android.view.LayoutInflater
 import android.view.View

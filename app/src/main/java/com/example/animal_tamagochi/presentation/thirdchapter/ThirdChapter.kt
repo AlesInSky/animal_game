@@ -13,8 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animal_tamagochi.models.CardAdapter
-import com.example.animal_tamagochi.DialogueActivity
+import com.example.animal_tamagochi.domain.dialogue.DialogueActivity
 import com.example.animal_tamagochi.R
 
 class ThirdChapter : ComponentActivity() {

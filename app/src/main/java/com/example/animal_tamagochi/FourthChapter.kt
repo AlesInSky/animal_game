@@ -8,6 +8,7 @@ import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
+import com.example.animal_tamagochi.domain.dialogue.DialogueActivity
 
 class FourthChapter : ComponentActivity() {
 
