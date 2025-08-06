@@ -19,7 +19,7 @@
             android:name=".presentation.secondchapter.SecondChapter"
             android:exported="true" />
         <activity
-            android:name=".ThirdChapter"
+            android:name=".presentation.thirdchapter.ThirdChapter"
             android:exported="true" />
         <activity
             android:name=".FourthChapter"
