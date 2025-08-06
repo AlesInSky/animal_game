@@ -1,13 +1,14 @@
-package com.example.animal_tamagochi
+package com.example.animal_tamagochi.models
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.animal_tamagochi.models.Card
+import com.example.animal_tamagochi.R
 
 class CardAdapter(
-    private val cards: List<Card>,
+    private var cards: List<Card>,
     private val onCardClick: (Int) -> Unit
 ) : RecyclerView.Adapter<CardAdapter.CardViewHolder>() {
 
@@ -36,4 +37,12 @@ class CardAdapter(
             onCardClick(position)
         }
     }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateCards(newCards: List<Card>) {
+        cards = newCards.toMutableList()
+        notifyDataSetChanged()
+    }
+
+
 }
